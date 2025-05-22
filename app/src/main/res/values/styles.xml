@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseCalculatorButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="NumberButton" parent="BaseCalculatorButton">
+        <item name="backgroundTint">@color/number_button_bg</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="OperationButton" parent="BaseCalculatorButton">
+        <item name="backgroundTint">@color/operation_button_bg</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="SpecialOperationButton" parent="BaseCalculatorButton">
+        <item name="backgroundTint">@color/special_button_bg</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="MemoryButton" parent="BaseCalculatorButton">
+        <item name="backgroundTint">@color/memory_button_bg</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="EqualButton" parent="BaseCalculatorButton">
+        <item name="backgroundTint">@color/equal_button_bg</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

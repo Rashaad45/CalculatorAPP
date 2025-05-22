@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <!-- Card for calculator display -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/displayCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/display_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- History Display -->
+            <TextView
+                android:id="@+id/historyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:maxLines="3"
+                android:paddingHorizontal="8dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp" />
+
+            <!-- Expression Display -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <TextView
+                    android:id="@+id/expressionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingHorizontal="8dp"
+                    android:paddingTop="8dp"
+                    android:text="0"
+                    android:textColor="@color/text_primary"
+                    android:textSize="36sp" />
+            </HorizontalScrollView>
+
+            <!-- Result Display -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <TextView
+                    android:id="@+id/resultText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="=0"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="28sp" />
+            </HorizontalScrollView>
+
+            <!-- Memory Display -->
+            <TextView
+                android:id="@+id/memoryIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:paddingHorizontal="8dp"
+                android:text="M"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card for calculator buttons -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/buttonsCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/keypad_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayCard">
+
+        <GridLayout
+            android:id="@+id/buttonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:columnCount="4"
+            android:rowCount="6"
+            android:useDefaultMargins="true">
+
+            <!-- Memory Row: MC, MR, M+, M- -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/memoryClear"
+                style="@style/MemoryButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="MC" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/memoryRecall"
+                style="@style/MemoryButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="MR" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/memoryAdd"
+                style="@style/MemoryButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="M+" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/memorySubtract"
+                style="@style/MemoryButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="M-" />
+
+            <!-- First Row: Clear, Backspace, Parentheses, Divide -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear"
+                style="@style/SpecialOperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="C" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backSpace"
+                style="@style/SpecialOperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="⌫" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/parentheses"
+                style="@style/SpecialOperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="( )" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/divide"
+                style="@style/OperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="÷" />
+
+            <!-- Second Row: 7, 8, 9, Multiply -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/seven"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="7" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/eight"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/nine"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="9" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/multiply"
+                style="@style/OperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="×" />
+
+            <!-- Third Row: 4, 5, 6, Subtract -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/four"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="4" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/five"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/six"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/subtract"
+                style="@style/OperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="−" />
+
+            <!-- Fourth Row: 1, 2, 3, Add -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/one"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/two"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/three"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add"
+                style="@style/OperationButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="+" />
+
+            <!-- Fifth Row: Double Zero, Zero, Dot, Equal -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/percent"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="%" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/zero"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dot"
+                style="@style/NumberButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/equal_to"
+                style="@style/EqualButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:text="=" />
+
+        </GridLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

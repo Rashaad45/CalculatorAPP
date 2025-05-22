@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme colors -->
+    <color name="primary">#5B67CA</color>
+    <color name="primary_variant">#4050B5</color>
+    <color name="secondary">#FF6D00</color>
+    <color name="secondary_variant">#DD5C00</color>
+
+    <!-- Standard colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- App specific colors -->
+    <color name="background">#F8F9FA</color>
+    <color name="keypad_background">#FFFFFF</color>
+    <color name="display_background">#FFFFFF</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+
+    <!-- Button colors -->
+    <color name="number_button_bg">#F1F3F6</color>
+    <color name="operation_button_bg">#5B67CA</color>
+    <color name="special_button_bg">#E1E6EF</color>
+    <color name="memory_button_bg">#E9EAF2</color>
+    <color name="equal_button_bg">#FF6D00</color>
+</resources>
